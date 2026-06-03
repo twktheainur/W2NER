@@ -81,7 +81,8 @@ class Trainer:
         )
 
         # ── AMP scaler (no-op when amp=False) ──
-        self.scaler = torch.cuda.amp.GradScaler(enabled=config.amp)
+        self.amp_enabled = bool(config.amp)
+        self.scaler = torch.cuda.amp.GradScaler(enabled=self.amp_enabled)
 
     # ── Training ────────────────────────────────────────────────────
 
@@ -122,7 +123,7 @@ class Trainer:
                 self.telemetry.record_data_loaded()
 
             # ── Forward pass (optionally with AMP) ──
-            with torch.cuda.amp.autocast(enabled=self.config.amp):
+            with torch.amp.autocast(device_type="cuda", enabled=self.amp_enabled):
                 outputs = model(
                     bert_inputs, grid_mask2d, dist_inputs, pieces2word, sent_length
                 )
