@@ -35,7 +35,7 @@ class Trainer(object):
              'weight_decay': config.weight_decay},
         ]
 
-        self.optimizer = transformers.AdamW(params, lr=config.learning_rate, weight_decay=config.weight_decay)
+        self.optimizer = torch.optim.AdamW(params, lr=config.learning_rate, weight_decay=config.weight_decay)
         self.scheduler = transformers.get_linear_schedule_with_warmup(self.optimizer,
                                                                       num_warmup_steps=config.warm_factor * updates_total,
                                                                       num_training_steps=updates_total)

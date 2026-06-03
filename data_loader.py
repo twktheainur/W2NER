@@ -119,10 +119,10 @@ def process_bert(data, tokenizer, vocab):
         _bert_inputs = np.array([tokenizer.cls_token_id] + _bert_inputs + [tokenizer.sep_token_id])
 
         length = len(instance['sentence'])
-        _grid_labels = np.zeros((length, length), dtype=np.int)
-        _pieces2word = np.zeros((length, len(_bert_inputs)), dtype=np.bool)
-        _dist_inputs = np.zeros((length, length), dtype=np.int)
-        _grid_mask2d = np.ones((length, length), dtype=np.bool)
+        _grid_labels = np.zeros((length, length), dtype=np.int64)
+        _pieces2word = np.zeros((length, len(_bert_inputs)), dtype=np.bool_)
+        _dist_inputs = np.zeros((length, length), dtype=np.int64)
+        _grid_mask2d = np.ones((length, length), dtype=np.bool_)
 
         if tokenizer is not None:
             start = 0
