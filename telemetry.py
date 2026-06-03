@@ -63,6 +63,7 @@ class TrainingTelemetry:
         self.data_time = 0.0
         self.forward_time = 0.0
         self.backward_time = 0.0
+        self.eval_time = 0.0
 
         # Counters
         self.batch_count = 0
@@ -361,6 +362,7 @@ class TrainingTelemetry:
         self.data_time = 0.0
         self.forward_time = 0.0
         self.backward_time = 0.0
+        self.eval_time = 0.0
         self.batch_count = 0
         self.losses = []
         self.zone_losses = {"nnw": [], "thw": [], "pad": []}
