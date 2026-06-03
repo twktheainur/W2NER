@@ -2,6 +2,7 @@ import logging
 import pickle
 import time
 from collections import defaultdict, deque
+from pathlib import Path
 
 
 def get_logger(dataset):
@@ -109,3 +110,18 @@ def cal_f1(c, p, r):
     if r and p:
         return 2 * p * r / (p + r), p, r
     return 0, p, r
+
+
+def create_tensorboard_writer(log_dir):
+    """Create a TensorBoard SummaryWriter if tensorboard is available.
+
+    Returns None if tensorboard is not installed (graceful fallback).
+    """
+    try:
+        from torch.utils.tensorboard import SummaryWriter
+        log_path = Path(log_dir)
+        log_path.mkdir(parents=True, exist_ok=True)
+        writer = SummaryWriter(log_dir=str(log_path))
+        return writer
+    except (ImportError, ModuleNotFoundError):
+        return None

@@ -28,6 +28,13 @@
   "warm_factor": 0.1,
 
   "use_bert_last_4_layers": false,
-  "seed": 123
+  "seed": 123,
 
+  "telemetry": false,
+  "telemetry_dir": "./telemetry",
+  "tensorboard": false,
+
+  "amp": false,
+  "early_stop_patience": 0,
+  "gradient_accumulation": 1
 }

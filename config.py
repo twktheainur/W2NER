@@ -38,6 +38,16 @@ class Config:
 
         self.seed = config["seed"]
 
+        # ── Telemetry ──
+        self.telemetry = config.get("telemetry", False)
+        self.telemetry_dir = config.get("telemetry_dir", "./telemetry")
+        self.tensorboard = config.get("tensorboard", False)
+
+        # ── Training improvements ──
+        self.amp = config.get("amp", False)
+        self.early_stop_patience = config.get("early_stop_patience", 0)
+        self.gradient_accumulation = config.get("gradient_accumulation", 1)
+
         for k, v in args.__dict__.items():
             if v is not None:
                 self.__dict__[k] = v
