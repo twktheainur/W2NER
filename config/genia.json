@@ -1,5 +1,5 @@
 {
-  "dataset": "genia",
+  "dataset": "genia-sentence-50",
   "save_path": "model.pt",
   "predict_path": "output.json",
 

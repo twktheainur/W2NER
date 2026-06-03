@@ -1,5 +1,5 @@
 {
-  "dataset": "cadec",
+  "dataset": "cadec_meddra-sentence-50",
   "save_path": "model.pt",
   "predict_path": "output.json",
 
